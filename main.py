@@ -18,7 +18,8 @@ def new_gesture():
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 2)
 
-OUTPUT = True
+OUTPUT = False
+# OUTPUT = True
 
 try:
     with mp.solutions.holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
@@ -57,7 +58,7 @@ try:
 
                 if scalar > 0:
                     init_counter += 1
-                    if init_counter > 3:
+                    if init_counter > 2:
                         if current is None:
                             current = new_gesture()
                             print("New")
